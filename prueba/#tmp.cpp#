@@ -1,0 +1,14 @@
+
+#include <iostream>
+
+(){
+  int a,i,suma=0;
+  cin>>a;
+  for(i=0;i<=a;i++){
+    suma+=i;
+    cout<<i<<"\n";
+  }
+  cout<<"La suma de los n primeros números es: "<<suma<<"\n";
+  cout<<"Hola Mundo!\n";
+  return 0;
+}

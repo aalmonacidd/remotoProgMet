@@ -1,0 +1,25 @@
+#include <cmath>
+#include <iostream>
+
+double fun(double x);
+double fderive(double x, double h);
+
+int main( int argc, char **argv){
+  std::cout.precision(15);
+  std::cout.setf(std::ios::scientific);
+  const double x=std::atof(argv[1]);
+  for(double h=1.0e-1;h>=1.0e-15;h/=10.0){
+    std::cout <<h<<"\t"<<std::fabs(1-fderive(x,h)/std::cos(x))<<"\n";
+    }
+  return 0;
+}
+
+double fun(double x){
+
+  return std::sin(x);
+}
+
+double fderive(double x,double h){
+  return (fun(x+h)-fun(x))/h;
+}
+	  

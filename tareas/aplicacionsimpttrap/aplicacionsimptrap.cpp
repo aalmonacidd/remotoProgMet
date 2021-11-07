@@ -1,11 +1,8 @@
 #include <iostream>
 #include <cmath>
-#define PI 3.14159265358979323846
 
 double DeltaTrap(int n);
 double DeltaSimp(int n);
-
-double Rad(double x);
 double trapecio(double a, double b, int n);
 double simpson(double a, double b, int n);
 double fun(double x);

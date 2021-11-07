@@ -11,8 +11,8 @@ double exacto(double x);
 int main()
 {
     std::cout.precision(15); std::cout.setf(std::ios::scientific);
-    std::cout<<"10"<<"\t"<<DeltaTrap(10)<<"\t"<<DeltaSimp(10)<<"\n"<<
-    "1000"<<"\t"<<DeltaTrap(1000)<<"\t"<<DeltaSimp(1000)<<"\n";
+    std::cout<<"10"<<"\t"<<DeltaTrap(10)<<"%"<<"\t"<<DeltaSimp(10)<<"%"<<"\n"<<
+    "1000"<<"\t"<<DeltaTrap(1000)<<"%"<<"\t"<<DeltaSimp(1000)<<"%"<<"\n";
     return 0;
 }
 
@@ -27,12 +27,12 @@ double exacto(double x){
 
 double DeltaTrap(int n){
     double T= trapecio(0,4,n);
-    return std::abs(T-exacto(4))/exacto(4);
+    return std::abs(T-exacto(4))/exacto(4)*100;
 }
 
 double DeltaSimp(int n){
     double S= simpson(0,4,n);
-    return std::abs(S-exacto(4))/exacto(4);
+    return std::abs(S-exacto(4))/exacto(4)*100;
 }
 
 double trapecio(double a, double b, int n){

@@ -47,7 +47,7 @@ void multiply(const std::vector<double> & m1, const std::vector<double> & m2, st
   const int N = std::sqrt(m1.size()); // assumes square matrices
   for(int o=0;o<N;o++){
       for(int p=0;p<N;p++){
-          m3[o*N+p]=sumaterminos(m1,m2,o,p,N);
+          m3[o*N+p]=sumaterminos(m1,m2,o,p,N);//función que realiza la operación para cada elemento de la matriz
       }
   }
 }

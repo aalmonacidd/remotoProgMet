@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 void multiply(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3);
 double sumaterminos(const std::vector<double> & m1, const std::vector<double> & m2, int i, int j, int N);
@@ -12,6 +13,7 @@ double sumaterminos(const std::vector<double> & m1, const std::vector<double> & 
 int main(int argc, char **argv) {
     const int SEED = std::atoi(argv[1]);
     double durcuatro=1;//inicializar variable de duracion para matrices 4*4
+    std::ofstream fout("GraficaTiempos.txt");
     for(int k=2;k<=9;k++){
         int N=pow(2,k);
         std::vector<double> A(N*N, 0.0), B(N*N, 0.0), C(N*N, 0.0);
@@ -28,13 +30,15 @@ int main(int argc, char **argv) {
         // use the matrix to avoid the compiler removing it
         C[N/2];
         std::cout<<"Tiempo para N="<<N<<std::endl;
-
         // print time
         auto elapsed = std::chrono::duration<double>(stop - start);
         if(k==2){
           durcuatro=elapsed.count();
         }
         std::cout << elapsed.count()/durcuatro << "\n\n";
+
+        //Impresion en archivo
+        fout<< N <<"\t"<< elapsed.count()/durcuatro << "\n";
 }
   return 0;
 }

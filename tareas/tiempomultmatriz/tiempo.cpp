@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 
       // use the matrix to avoid the compiler removing it
       C[N/2];
-      std::cout<<"Tiempo para N="<<N<<std::endl;
+      std::cout<<"Proporción de tiempo entre 4 y N, para N="<<N<<std::endl;
 
       // print time
       auto elapsed = std::chrono::duration<double>(stop - start);

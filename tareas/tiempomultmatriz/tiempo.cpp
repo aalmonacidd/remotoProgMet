@@ -20,23 +20,21 @@ int main(int argc, char **argv) {
         // lambda function: a local function that captures [] something, receives something (), and return something {}
         // See: https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/
         std::generate(A.begin(), A.end(), [&gen, &dist](){ return dist(gen); }); // uses a lambda function
-        std::generate(B.begin(), B.end(), [&gen, &dist](){ return dist(gen); }); // uses a lambda function
+        std::generate(B.begin(), B.end(), [&gen, &dist](){ return dist(gen); }); // uses a lambda function // multiply the matrices A and B and save the result into C. Measure time
+        auto start = std::chrono::high_resolution_clock::now();
+        multiply(A, B, C);
+        auto stop = std::chrono::high_resolution_clock::now();
 
-      // multiply the matrices A and B and save the result into C. Measure time
-      auto start = std::chrono::high_resolution_clock::now();
-      multiply(A, B, C);
-      auto stop = std::chrono::high_resolution_clock::now();
+        // use the matrix to avoid the compiler removing it
+        C[N/2];
+        std::cout<<"Tiempo para N="<<N<<std::endl;
 
-      // use the matrix to avoid the compiler removing it
-      C[N/2];
-      std::cout<<"Tiempo para N="<<N<<std::endl;
-
-      // print time
-      auto elapsed = std::chrono::duration<double>(stop - start);
-      if(k==2){
+        // print time
+        auto elapsed = std::chrono::duration<double>(stop - start);
+        if(k==2){
           durcuatro=elapsed.count();
-      }
-      std::cout << elapsed.count()/durcuatro << "\n\n";
+        }
+        std::cout << elapsed.count()/durcuatro << "\n\n";
 }
   return 0;
 }

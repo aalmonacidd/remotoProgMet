@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 
       // use the matrix to avoid the compiler removing it
       C[N/2];
-      std::cout<<"Proporción de tiempo entre 4 y N, para N="<<N<<std::endl;
+      std::cout<<"Tiempo para N="<<N<<std::endl;
 
       // print time
       auto elapsed = std::chrono::duration<double>(stop - start);
@@ -45,9 +45,11 @@ int main(int argc, char **argv) {
 void multiply(const std::vector<double> & m1, const std::vector<double> & m2, std::vector<double> & m3)
 {
   const int N = std::sqrt(m1.size()); // assumes square matrices
+  int i=1;
+  int a=0;
   for(int o=0;o<N;o++){
       for(int p=0;p<N;p++){
-          m3[o*N+p]=sumaterminos(m1,m2,o,p,N);//función que realiza la operación para cada elemento de la matriz
+        m3[o*N+p]=sumaterminos(m1,m2,o,p,N);
       }
   }
 }
@@ -55,7 +57,7 @@ void multiply(const std::vector<double> & m1, const std::vector<double> & m2, st
 double sumaterminos(const std::vector<double> & m1, const std::vector<double> & m2, int i, int j, int N){
     double suma=0;
     for(int k=0;k<N;k++){
-        suma=m1[i*N+k]*m2[k*N+j]; //indices de dos dimensiones a vector 1d
+        suma+= (m1[i*N+k]*m2[k*N+j]); //indices de dos dimensiones a vector 1d
     }
     return suma;
 }

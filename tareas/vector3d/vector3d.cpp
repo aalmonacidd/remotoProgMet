@@ -28,7 +28,7 @@ struct Vector
 
 int main()
 {
-
+    std::cout << "Ángel Almonacid y Juan Manuel García" <<std::endl;
     Vector v1(1.0,2.0,3.0), v2(4.0,5.0,6.0);
     Vector v3 = v1+v2;
     v3.print();

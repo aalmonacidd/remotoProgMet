@@ -22,9 +22,8 @@ int main(int argc, char **argv)
   const double E0=atof(argv[1]);
   const double phi0= atof(argv[2]);
   const double phidot0=atof(argv[3]);
-  state_t y(N); // (T, z)
+  state_t y(N); // (phi(x), z)
 
-  // create lambda function: receives one arg (z) and return the final T value minus the expected one.
   struct Fderive {
     double E_=0;
     void operator()(const state_t &y, state_t &dydx, double t){
@@ -41,20 +40,20 @@ int main(int argc, char **argv)
   // perform a Newton-Raphson procedure to find the root
   // compute numerically the derivative
   int nsteps = 0;
-  double z0  = newton(E0, faux, 0.000001, nsteps);
+  double z0  = newton(E0, faux, 0.000001, nsteps);//busqueda de raice
 
   // print final data
   y[0] = phi0; y[1] = phidot0;
-  Fderive n; n.E_=z0;
-  boost::numeric::odeint::integrate(n, y, X0, XF, DX, print);
-  std::cerr << z0 <<std::endl;
+  Fderive n; n.E_=z0;//asigna el valor verificado de z para la función de onda
+  boost::numeric::odeint::integrate(n, y, X0, XF, DX, print);//Función de onda
+  std::cerr << z0 <<std::endl;//impresion E
 
   return 0;
 }
 
 void print(const state_t & y, double time)
 {
-  std::cout << time << "\t" << y[0] << std::endl;
+  std::cout << time << "\t" << y[0] << std::endl;//imprime phi(x)
 }
 
 
